@@ -73,4 +73,26 @@ public class MathControllerTest {
         this.mvc.perform(request)
                 .andExpect(status().isBadRequest());
     }
+
+
+    @Test
+    public void testVolume() throws Exception {
+
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/volume/3/4/5");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The volume of a 3x4x5 rectangle is 60"));
+
+    }
+
+    @Test
+    public void testVolume_Return400_GivenBadRequest() throws Exception {
+
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/volume/3/4/dumb");
+
+        this.mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
 }

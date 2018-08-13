@@ -34,4 +34,10 @@ public class MathController {
     public String sum(@RequestParam(value = "n") List<Integer> n) {
         return mathService.sum(n);
     }
-}
+
+    @GetMapping("/volume/{length}/{width}/{height}")
+    public String volume(@PathVariable(value = "length") Integer length, @PathVariable(value = "width") Integer width, @PathVariable(value = "height") Integer height) {
+        return mathService.volume(length, width, height);
+    }
+
+    }

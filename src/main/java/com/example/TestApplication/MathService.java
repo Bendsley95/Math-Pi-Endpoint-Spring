@@ -2,6 +2,7 @@ package com.example.TestApplication;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,4 +42,9 @@ public class MathService {
         equation += " = " + sum;
         return equation;
     }
+
+    public String volume(@PathVariable(value = "length") Integer length, @PathVariable(value = "width") Integer width, @PathVariable(value = "height") Integer height) {
+        return "The volume of a " + length + "x" + width + "x" + height + " rectangle is " + (length*width*height);
+    }
+
 }
